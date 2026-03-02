@@ -1,0 +1,4 @@
+[
+  {"id":"c1","prompt":"How to create a Thing in ThingWorx?","expectedCitation":"sample_docs/guide.md"},
+  {"id":"c2","prompt":"What is a service in ThingWorx?","expectedCitation":"sample_docs/guide.md"}
+]

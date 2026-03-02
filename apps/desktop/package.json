@@ -1,0 +1,36 @@
+{
+  "name": "@apps/desktop",
+  "version": "0.1.0",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"tsc -p electron/tsconfig.json --watch\"",
+    "build": "vite build && tsc -p electron/tsconfig.json",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "package": "electron-builder -mwl"
+  },
+  "dependencies": {
+    "@mui/material": "^6.1.1",
+    "@packages/metering": "workspace:*",
+    "@packages/shared": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.8",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "concurrently": "^9.0.1",
+    "electron": "^32.1.0",
+    "electron-builder": "^25.0.5",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vitest": "^2.1.1"
+  },
+  "build": {
+    "appId": "com.example.thingworxstudio",
+    "productName": "ThingWorx Studio",
+    "files": ["dist/**/*", "dist-electron/**/*"]
+  }
+}
