@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atio ThingWorx Agent</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #0b1020; color: #e6e7eb; }
+    header { background: #111a33; padding: 12px 16px; display:flex; gap:8px; align-items:center; }
+    button, input, select, textarea { padding: 8px; border-radius: 6px; border: 1px solid #3c4460; background:#1a2240; color:#fff; }
+    main { padding: 16px; }
+    .screen { display:none; }
+    .screen.active { display:block; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .card { background:#111a33; padding:12px; border-radius:8px; }
+    ul { padding-left: 20px; }
+    .status { font-size:12px; color:#9fb2ff; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Atio Agent MVP</strong>
+    <button data-nav="wizard">Wizard</button>
+    <button data-nav="login">Login</button>
+    <button data-nav="workspace">Workspaces</button>
+    <button data-nav="chat">Chat/RAG</button>
+    <button data-nav="settings">Settings</button>
+    <button data-nav="usage">Usage</button>
+    <span id="authState" class="status"></span>
+  </header>
+  <main>
+    <section id="wizard" class="screen active card">
+      <h2>First Run Wizard</h2>
+      <label><input id="telemetryOptIn" type="checkbox"/> Opt-in telemetry</label><br/><br/>
+      <label>Model mode
+        <select id="modelMode"><option value="local">Local</option><option value="cloud">Cloud</option><option value="hybrid">Hybrid</option></select>
+      </label>
+      <button id="saveWizard">Initialize Workspace</button>
+      <div id="wizardStatus" class="status"></div>
+    </section>
+
+    <section id="login" class="screen card">
+      <h2>WorkOS SSO Login</h2>
+      <button id="loginBtn">Login via System Browser</button>
+      <button id="logoutBtn">Logout</button>
+      <pre id="loginState"></pre>
+    </section>
+
+    <section id="workspace" class="screen card">
+      <h2>Workspace Management</h2>
+      <input id="workspaceName" placeholder="workspace name"/>
+      <button id="createWorkspaceBtn">Create</button>
+      <ul id="workspaceList"></ul>
+    </section>
+
+    <section id="chat" class="screen card">
+      <h2>Chat / RAG</h2>
+      <div class="grid">
+        <div>
+          <input id="docSource" placeholder="source path"/>
+          <textarea id="docContent" placeholder="document content" rows="6" style="width:100%"></textarea>
+          <button id="addDocBtn">addDocument()</button>
+        </div>
+        <div>
+          <input id="searchQuery" placeholder="search query"/>
+          <button id="searchBtn">search()</button>
+          <pre id="searchResults"></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="settings" class="screen card">
+      <h2>Settings</h2>
+      <label>User preference <select id="userPreference"><option>balanced</option><option>local-first</option><option>cloud-first</option></select></label>
+      <label>Cost cap USD <input id="costCap" type="number" value="25"/></label>
+      <button id="saveSettingsBtn">Save</button>
+      <button id="routeSampleBtn">Run Routing Decision</button>
+      <pre id="routeOutput"></pre>
+    </section>
+
+    <section id="usage" class="screen card">
+      <h2>Usage & Entitlements</h2>
+      <button id="recordUsageBtn">Record Sample Usage</button>
+      <button id="verifyLedgerBtn">Verify Ledger</button>
+      <button id="reconcileBtn">Reconcile</button>
+      <div id="entitlementState">Subscription: active (stub)</div>
+      <pre id="usageOutput"></pre>
+    </section>
+  </main>
+  <script src="renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "desktop",
+  "version": "0.1.0",
+  "main": "src/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "electron src/main.js",
+    "build": "node ./scripts/build-check.js",
+    "test": "node --test",
+    "lint": "node ./scripts/lint.js"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "keytar": "^7.9.0"
+  },
+  "devDependencies": {
+    "electron": "^30.0.8"
+  }
+}
