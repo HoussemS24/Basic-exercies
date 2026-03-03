@@ -1,0 +1,15 @@
+{
+  "name": "atio-thingworx-agent-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop reference implementation skeleton for Atio ThingWorx Agent",
+  "workspaces": [
+    "apps/desktop"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w apps/desktop",
+    "build": "npm run build -w apps/desktop",
+    "test": "npm run test -w apps/desktop",
+    "lint": "npm run lint -w apps/desktop"
+  }
+}
